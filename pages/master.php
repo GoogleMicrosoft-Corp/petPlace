@@ -9,7 +9,25 @@
 </head>
 <body>
     <div><?php include('header.php');?></div>
-    <!--<div><?php include($page_content);?></div>-->
+    <div><?php 
+    	include( 'view/perfil.php');
+    	$teste = new perfill;
+    	$nome = $teste -> getNome();
+
+    	$div_central =  "<div style='display: -webkit-box;
+					  display: -webkit-flex;
+					  display: -moz-box;
+					  display: -ms-flexbox;
+					  display: flex;
+					  flex-wrap: wrap;
+					  justify-content: center;
+					  align-items: center;'>" 
+					  . $nome  
+					  ."</div>";
+    	echo $div_central;
+    	?>
+    	
+    </div>
     <div><?php include('footer.php');?></div>
 </body>
 
