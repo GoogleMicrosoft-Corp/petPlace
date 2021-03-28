@@ -3,9 +3,11 @@
 
    <head>
        <meta charset="utf-8"/>
-       <title>Cadastro de Pet</title>       
+       <title>Cadastro de Pet</title>  
+       <link rel="stylesheet" type="text/css" href="../css/master.css">     
    </head>
    <body>
+    <div><?php include('header.php');?></div>
     <form>
         <fieldset>
             <legend>Cadastro de Pets</legend>
@@ -49,6 +51,7 @@
         </div>
     </fieldset>
     </form>
+    <div><?php include('footer.php');?></div>
    </body>
 </html>
 

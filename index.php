@@ -29,7 +29,7 @@
                         
                         if (count($nome) > 1)
                         { 
-                            header("Location: pages/master.php");
+                            header("Location: pages/CadastrarPet.php");
                             exit();
                         }//echo  "id: " . $nome[1][0] . "  Nome: " . $nome[1][1] ; 
                         else{
