@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript">
+        function alerta(text){
+            alert(text)
+        }
+    </script>
 </head>
 <body>
     
@@ -13,20 +18,23 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="images/img-01.png" alt="IMG">                    
+                    <img src="images/img-01.png" alt="IMG" style="border-radius: 20%;">                    
                 </div>
                 <?php
-                    
-                    $login = "123";
-                    $senha = "123";
-
-                    if(isset($_POST["login"])){
-
-                        if($_POST["login"] == $login and $_POST["senha"] == $senha){
+                    if(isset($_POST["login"]))
+                    {
+                        include('pages/view/conn.php');
+                        $conn = new conexao;
+                        $nome = $conn -> SelectReturn("select * from usuarios where email='". $_POST["login"] ."' and usr_hash = '".$_POST["senha"]. "' ");                        
+                        
+                        if (count($nome) > 1)
+                        { 
                             header("Location: pages/master.php");
                             exit();
-                        }else{
-                            echo "Login ou senha inválido";
+                        }//echo  "id: " . $nome[1][0] . "  Nome: " . $nome[1][1] ; 
+                        else{
+                            $_POST["login"] = null;
+                            echo "<script> alerta('Email ou senha incorretos'); </script>";
                         }
                     }
                 ?>

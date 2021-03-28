@@ -9,7 +9,10 @@
 </head>
 <body>
     <div><?php include('header.php');?></div>
-    <div><?php 
+    <div><?php include('CadastrarPet.php');?>
+
+
+    	<!--<?php 
     	include( 'view/perfil.php');
     	$teste = new perfill;
     	$nome = $teste -> getNome();
@@ -25,7 +28,7 @@
 					  . $nome  
 					  ."</div>";
     	echo $div_central;
-    	?>
+    	?>-->
     	
     </div>
     <div><?php include('footer.php');?></div>
