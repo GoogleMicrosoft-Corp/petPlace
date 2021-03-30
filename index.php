@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript">
         function alerta(text){
-            alert(text);
+            alert(text)
         }
     </script>
 </head>
