@@ -39,7 +39,7 @@
                 </div>
                 <div>
                     <label for="txtIdadePet">Idade:</label>
-                    <input class="normalizadorlayout" id="txtIdadePet" name="IdadePet" type="number">
+                    <input class="normalizadorlayout" id="txtIdadePet" name="IdadePet" type="number" min="0">
                 </div>
                 <div>
                     <label for="DescPet">Descrição:</label><br>

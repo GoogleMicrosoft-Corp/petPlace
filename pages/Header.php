@@ -10,6 +10,8 @@
 		  <li><a href="#">Conversas</a></li>
 		  <li><a href="#">Seu Perfil</a></li>
 		  <li><a href="#">Seus Pets</a></li>
+		  <li><a href="../pages/CadastroAnimais.php">Cadastro de Animais</a></li>
+		  <li><a href="../pages/CadastroUsuarios.php">Cadastro de Usuários</a></li>
 		</ul>
     </nav>
 </header>
