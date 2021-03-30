@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-   <head>
-       <meta charset="utf-8"/>
-       <title>Cadastro de Pet</title>  
-       <link rel="stylesheet" type="text/css" href="../css/master.css">     
+    <head>
+        <title>Cadastro de Pet</title>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="../css/master.css">     
    </head>
    <body>
     <div><?php include('header.php');?></div>
@@ -29,9 +30,9 @@
         <div>
             <label for="txtSexoPet">Sexo</label><br>
             <input id="txtSexoPet1" name="txtSexoPet" type="radio" value="M">
-            <label for="txtSexoPet1">Masculino</label>
+            <label for="txtSexoPet1">Macho</label>
             <input id="txtSexoPet2" name="txtSexoPet" type="radio" value="F">
-            <label for="txtSexoPet2">Feminino</label>            
+            <label for="txtSexoPet2">Fêmea</label>            
         </div>
         <div>
             <label for="txtIdadePet">Idade</label><br>
