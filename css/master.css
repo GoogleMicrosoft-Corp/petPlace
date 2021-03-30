@@ -65,7 +65,7 @@ li a:hover {
 	background: -o-linear-gradient(-135deg, #03A865, #066355);
 	background: -moz-linear-gradient(-135deg, #03A865, #066355);
 	background: linear-gradient(-135deg, #03A865, #066355);
-	position: absolute;
+	position: sticky;
 	bottom: 0;
 	
 	text-align: center;
