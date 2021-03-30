@@ -27,7 +27,6 @@ select {
   border-radius: 2px;
 }
 
-
 .fieldset-center{
 	width: 80%;	
 	margin: 0 auto;
@@ -94,7 +93,3 @@ select {
 	transition-duration: 0.7s, 0.15s;
 	transition-timing-function: ease;
 }
-
-
-
-

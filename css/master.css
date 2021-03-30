@@ -6,8 +6,6 @@ body{
 .header-master{
 	height: 70px;
 	padding: 0;  
-	/*transform: skewY(-3deg);*/
-
 	background: -webkit-linear-gradient(-135deg, #066355,#03A865);
 	background: -o-linear-gradient(-135deg, #066355, #03A865);
 	background: -moz-linear-gradient(-135deg, #066355, #03A865);
@@ -54,8 +52,6 @@ li a {
 div-1-master a {
 	padding: 0;
 }
-
-/* Change the link color to #111 (black) on hover */
 li a:hover {
     color: #111;
 }
