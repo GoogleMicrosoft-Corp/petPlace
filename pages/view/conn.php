@@ -11,12 +11,12 @@
 			$conn = sqlsrv_connect( $serverName, $connectionInfo);
            
             $getUSR = sqlsrv_query($conn, $select);  
-            $pqp[] = [];
+            $obj[] = [];
             while($row = sqlsrv_fetch_array($getUSR, SQLSRV_FETCH_NUMERIC))
             {                         
-                $pqp[] = $row;
+                $obj[] = $row;
             }
-            return $pqp;
+            return $obj;
               
         }  
         catch(Exception $e)  
@@ -34,12 +34,12 @@
             $conn = sqlsrv_connect( $serverName, $connectionInfo);
            
             $getUSR = sqlsrv_query($conn, $select);  
-            $pqp[] = [];
+            $obj[] = [];
             while($row = sqlsrv_fetch_array($getUSR, SQLSRV_FETCH_NUMERIC))
             {                         
-                $pqp[] = $row;
+                $obj[] = $row;
             }
-            return $pqp;
+            return $obj;
               
         }  
         catch(Exception $e)  
