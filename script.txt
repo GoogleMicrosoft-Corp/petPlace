@@ -13,3 +13,22 @@ GO
 
 exec sp_rename 'USUARIOS.[USR_LOGIN]', 'EMAIL', 'column'
 GO
+
+---------
+
+ALTER TABLE usuarios
+ADD CPF VARCHAR (14)
+go
+
+ALTER TABLE usuarios
+ADD Telefone VARCHAR (15)
+go
+
+
+ALTER TABLE usuarios
+ADD Enderco VARCHAR (200)
+go
+
+ALTER TABLE usuarios
+ADD Descricao VARCHAR (MAX)
+go
