@@ -26,7 +26,7 @@ go
 
 
 ALTER TABLE usuarios
-ADD Enderco VARCHAR (200)
+ADD Endereco VARCHAR (200)
 go
 
 ALTER TABLE usuarios
