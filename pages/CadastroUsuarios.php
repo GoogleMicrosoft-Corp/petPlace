@@ -62,7 +62,16 @@
 
 <body>
     <div><?php include('header.php'); ?></div>
-    <form>
+    <?php
+        
+        if (isset($_POST["Nome"])){            
+            include('view/conn.php');
+            $conn = new conexao;
+            $conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'    " );
+        }
+    ?>
+
+    <form method="post">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Usuários</legend>
             <div>

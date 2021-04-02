@@ -1,5 +1,7 @@
 <?php
     class conexao {
+        
+
 
     public function SelectReturn($select)  
     {  
@@ -24,26 +26,25 @@
         }
     }
 
-    public function Insert($select)  
+    public function UPDATERETURN($sql)  
     {  
         try  
         {  
-            //$select = "select * from usuarios";
             $serverName = "DESKTOP-4L8OM6D";
             $connectionInfo = array("Database"=>"PETPLACE");
             $conn = sqlsrv_connect( $serverName, $connectionInfo);
-           
-            $getUSR = sqlsrv_query($conn, $select);  
-            $obj[] = [];
-            while($row = sqlsrv_fetch_array($getUSR, SQLSRV_FETCH_NUMERIC))
-            {                         
-                $obj[] = $row;
+
+            if( sqlsrv_query( $conn, $sql)){
+                
             }
-            return $obj;
-              
+            else {
+                
+            }
+           
         }  
         catch(Exception $e)  
-        {              
+        {     
+                   
         }
     }
 
