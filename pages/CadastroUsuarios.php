@@ -63,7 +63,7 @@
 <body>
     <div><?php include('header.php'); ?></div>
     <?php
-        
+       //$_SESSION['nome'];
         if (isset($_POST["Cadastro"])){            
             include('view/conn.php');
             $conn = new conexao;

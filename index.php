@@ -8,12 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript">
         function alerta(text){
-            alert(text)
+            alert(text);
         }
     </script>
 </head>
-<body>
-    
+<body>    
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -29,6 +28,11 @@
                         
                         if (count($nome) > 1)
                         { 
+                            session_start();
+                            $_SESSION['id'] = $nome[1][0];
+                            $_SESSION['nome'] = strtoupper($nome[1][1]);
+                            $_SESSION['email'] = $nome[1][2];
+
                             header("Location: pages/CadastrarPet.php");
                             exit();
                         }//echo  "id: " . $nome[1][0] . "  Nome: " . $nome[1][1] ; 
