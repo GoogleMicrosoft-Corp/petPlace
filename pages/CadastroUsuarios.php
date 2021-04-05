@@ -114,7 +114,7 @@
                 <button  name="Cadastro" class="btn_" type="submit">Cadastrar</button>
         </fieldset>
     </form>
-    <div><?php include('footer.php'); ?></div>
+    <!--<div><?php include('footer.php'); ?></div>-->
 </body>
 
 </html>
