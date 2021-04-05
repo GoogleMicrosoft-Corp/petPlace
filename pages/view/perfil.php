@@ -1,6 +1,6 @@
 <?php
 	class perfill {
-		public function getNome()
+		public function getCadastro()
 		{
 			include('conn.php');
 			$conn = new conexao;

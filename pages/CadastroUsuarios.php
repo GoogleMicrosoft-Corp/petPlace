@@ -64,10 +64,11 @@
     <div><?php include('header.php'); ?></div>
     <?php
         
-        if (isset($_POST["Nome"])){            
+        if (isset($_POST["Cadastro"])){            
             include('view/conn.php');
             $conn = new conexao;
-            $conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'    " );
+            //$conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'    " );
+            $conn -> UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
         }
     ?>
 
@@ -110,7 +111,7 @@
                 <textarea class="normalizadorlayout" id="Desc" name="Desc" rows="3" cols="33"></textarea>
             </div>
             <div>
-                <button class="btn_" type="submit">Cadastrar</button>
+                <button  name="Cadastro" class="btn_" type="submit">Cadastrar</button>
         </fieldset>
     </form>
     <div><?php include('footer.php'); ?></div>
