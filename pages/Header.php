@@ -9,7 +9,7 @@
 		  <li><a href="#">Adotar</a></li>		  
 		  <li><a href="#">Conversas</a></li>
 		  <li><a href="CadastroUsuarios.php">Seu Perfil</a></li>
-		  <li><a href="#">Seus Pets</a></li>
+		  <li><a href="CadastrarPet.php">Seus Pets</a></li>
 		  <li><a href="CadastroAnimais.php">Cadastro de Animais</a></li>		  
 		</ul>
     </nav>
