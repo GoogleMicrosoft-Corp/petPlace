@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>Cadastro de Usuários</title>
     <meta charset="UTF-8">
@@ -61,25 +62,25 @@
 <body>
     <div><?php include('header.php'); ?></div>
     <?php
-        $var = $_SESSION['nome'];
-        include('view/conn.php');
-        $conn = new conexao;
+    $var = $_SESSION['nome'];
+    include('view/conn.php');
+    $conn = new conexao;
 
-        if(isset($_POST["Cadastro"])){
-            if($_POST["Cadastro"] == 2){
-                $conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
-                $_SESSION['nome'] = $_POST["Nome"];
-            }
-            else{
-                $conn -> UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
-                $_SESSION['nome'] = $_POST["Nome"];
-            }
+    if (isset($_POST["Cadastro"])) {
+        if ($_POST["Cadastro"] == 2) {
+            $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
+            $_SESSION['nome'] = $_POST["Nome"];
+            header("Location: CadastroUsuarios.php");
+        } else {
+            $conn->UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
+            $_SESSION['nome'] = $_POST["Nome"];
+            header("Location: CadastroUsuarios.php");
         }
-        else{
+    } else {
 
-            //$_POST["Nome"] = $_SESSION['nome'];
-            //$_POST["Email"] = $_SESSION['email'];            
-        }
+        //$_POST["Nome"] = $_SESSION['nome'];
+        //$_POST["Email"] = $_SESSION['email'];            
+    }
     ?>
 
     <form method="post">
@@ -87,41 +88,50 @@
             <legend>Cadastro de Usuários</legend>
             <div>
                 <label for="txtNome">Nome</label><br>
-                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout" value="<?php echo $_SESSION['nome']; ?>">
+                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout width95porcem" value="<?php echo $_SESSION['nome']; ?>">
             </div>
-            </div>
-            
+
             <div>
+                <label for="txtEmail">E-mail</label><br>
+                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout width95porcem" value="<?php echo $_SESSION['email']; ?>">
+            </div>
+
+            <div style="display: inline-block;">
                 <label for="txtCPF">CPF</label><br>
                 <input id="txtCPF" type="text" name="cpf" onkeydown="javascript: Masc( this, CPF );" class="normalizadorlayout">
             </div>
-            
-            <div>
-                <label for="txtEmail">E-mail</label><br>
-                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout"  value="<?php echo $_SESSION['email']; ?>">
-            </div>
-            
-            <div>
+
+            <div style="display: inline-block;">
                 <label for="txtTelefone">Telefone</label><br>
                 <input id="txtTelefone" name="Telefone" type="txt" onkeydown="javascript: Masc( this, Tel );" class="normalizadorlayout">
             </div>
-            
-            <div>
+
+            <div style="display: inline-block;">
                 <label for="txtSenha">Senha</label><br>
                 <input id="txtSenha" name="Senha" type="password" class="normalizadorlayout">
             </div>
-            
+
             <div>
                 <label for="txtEnd">Endereço</label><br>
-                <input id="txtEnd" name="Endereço" type="txt" class="normalizadorlayout">
+                <input id="txtEnd" name="Endereço" type="txt" class="normalizadorlayout width95porcem">
             </div>
-            
+
             <div>
                 <label for="DescPet">Descrição</label><br>
-                <textarea class="normalizadorlayout" id="Desc" name="Desc" rows="3" cols="33"></textarea>
+                <textarea class="normalizadorlayout width95porcem" id="Desc" name="Desc" rows="3" cols="33"></textarea>
             </div>
             <div>
-                <button  name="Cadastro" class="btn_" type="submit" value="<?php if ( $_SESSION['id'] == ""){ echo 1;} else{echo 2;}?>">Cadastrar</button>
+                <label for="imgPet">Insira sua foto</label><br>
+                <input id="imgPet" class="normalizadorlayout" name="imgPet" type="file" accept="image/*" >
+            </div>
+
+            <div>
+                <button name="Cadastro" class="btn_" type="submit" value="<?php if ($_SESSION['id'] == "") {
+                                                                                echo 1;
+                                                                            } else {
+                                                                                echo 2;
+                                                                            } ?>">Cadastrar</button>
+            </div>
         </fieldset>
     </form>
     <!--<div><?php include('footer.php'); ?></div>-->
