@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <title>Cadastro de Usuários</title>
     <meta charset="UTF-8">
@@ -58,17 +57,28 @@
         }
     </script>
 </head>
-</head>
 
 <body>
     <div><?php include('header.php'); ?></div>
     <?php
-       //$_SESSION['nome'];
-        if (isset($_POST["Cadastro"])){            
-            include('view/conn.php');
-            $conn = new conexao;
-            //$conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'    " );
-            $conn -> UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
+        $var = $_SESSION['nome'];
+        include('view/conn.php');
+        $conn = new conexao;
+
+        if(isset($_POST["Cadastro"])){
+            if($_POST["Cadastro"] == 2){
+                $conn -> UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
+                $_SESSION['nome'] = $_POST["Nome"];
+            }
+            else{
+                $conn -> UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
+                $_SESSION['nome'] = $_POST["Nome"];
+            }
+        }
+        else{
+
+            //$_POST["Nome"] = $_SESSION['nome'];
+            //$_POST["Email"] = $_SESSION['email'];            
         }
     ?>
 
@@ -77,7 +87,7 @@
             <legend>Cadastro de Usuários</legend>
             <div>
                 <label for="txtNome">Nome</label><br>
-                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout">
+                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout" value="<?php echo $_SESSION['nome']; ?>">
             </div>
             </div>
             
@@ -88,7 +98,7 @@
             
             <div>
                 <label for="txtEmail">E-mail</label><br>
-                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout">
+                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout"  value="<?php echo $_SESSION['email']; ?>">
             </div>
             
             <div>
@@ -111,7 +121,7 @@
                 <textarea class="normalizadorlayout" id="Desc" name="Desc" rows="3" cols="33"></textarea>
             </div>
             <div>
-                <button  name="Cadastro" class="btn_" type="submit">Cadastrar</button>
+                <button  name="Cadastro" class="btn_" type="submit" value="<?php if ( $_SESSION['id'] == ""){ echo 1;} else{echo 2;}?>">Cadastrar</button>
         </fieldset>
     </form>
     <!--<div><?php include('footer.php'); ?></div>-->
