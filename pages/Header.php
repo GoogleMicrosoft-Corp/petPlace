@@ -17,8 +17,8 @@
 		  <li><a href="#">Conversas</a></li>
 		  <li><a href="CadastroUsuarios.php">Seu Perfil</a></li>
 		  <li><a href="CadastrarPet.php">Seus Pets</a></li>
-		  <li><a href="CadastroAnimais.php">Cadastro de Animais</a></li>		  
-		  <li><a href="../index.php">Sair</a></li>		
+		  <li><a href="CadastroAnimais.php" title="Ajude outras pessoas a reencontrarem seus amores">Pets Desaparecidos</a></li>		  
+		  <li><a href="../index.php" title="Desconectar">Sair</a></li>		
 		</ul>
     </nav>
 </header>
