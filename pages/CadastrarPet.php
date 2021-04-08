@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <title>Cadastro de Pet</title>  
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">  
-        <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="../css/master.css">     
-        <link rel="stylesheet" type="text/css" href="../css/layout.css">   
-   </head>
-   <body>
-    <div><?php include('header.php');?></div>
-    <form>
+
+<head>
+    <title>Cadastro de Pet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../css/master.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+</head>
+
+<body>
+    <div><?php include('header.php'); ?></div>
+
+    <?php
+    $var = $_SESSION['nome'];
+    include('view/conn.php');
+    $conn = new conexao;
+
+    if (isset($_POST["Cadastro"])) {
+        if ($_POST["Cadastro"] == 2) {
+            $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
+            $_SESSION['nome'] = $_POST["Cadastro"];
+            header("Location: CadastroUsuarios.php");
+        } else {
+            $conn->UPDATERETURN("insert into PETS values ('" . $_POST["NomePet"] . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . $_POST["DescPet"] . "', '" . $_SESSION['id'] . "')");
+            $_SESSION['nome'] = $_POST["Cadastro"];
+            header("Location: CadastrarPet.php");
+        }
+    } else {
+
+        //$_POST["Nome"] = $_SESSION['nome'];
+        //$_POST["Email"] = $_SESSION['email'];            
+    }
+    ?>
+
+
+
+    <form method="post">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Pets</legend>
             <div style="width: 45%; display: inline-block;">
@@ -18,7 +45,7 @@
                     <label for="txtNomePet">Nome do Seu Pet: </label>
                     <input id="txtNomePet" name="NomePet" type="text" class="normalizadorlayout">
                 </div>
-            
+
                 <div>
                     <label for="ddlTipoPet">Espécie:</label>
                     <select class="normalizadorlayout" id="ddlTipoPet" name="TipoPet">
@@ -28,14 +55,14 @@
                         <option value="3">Papagaio</option>
                         <option value="4">Periquito</option>
                         <option value="5">Camundongo</option>
-                      </select>
-                </div>  
+                    </select>
+                </div>
                 <div>
                     <label for="txtSexoPet">Sexo: </label>
                     <input id="txtSexoPet1" name="txtSexoPet" type="radio" value="M">
                     <label for="txtSexoPet1">Macho</label>
                     <input id="txtSexoPet2" name="txtSexoPet" type="radio" value="F">
-                    <label for="txtSexoPet2">Fêmea</label>            
+                    <label for="txtSexoPet2">Fêmea</label>
                 </div>
                 <div>
                     <label for="txtIdadePet">Idade:</label>
@@ -51,21 +78,21 @@
                 </div>
                 <br>
                 <div>
-                    <button class="btn_" type="submit">Cadastrar PET</button>
+                    <button name="Cadastro" class="btn_" type="submit">Cadastrar</button>
                 </div>
             </div>
             <div style="width: 45%; display: inline-block;  min-height: 300px !important" class="fieldset-center">
                 <div style="margin: 0 10px;">
-                   <h4>Exemplos de descrição:</h4>
-                   <p>1 - O meu pet tem problemas nas patas da esquerda e requer cuidado especial</p>   
-                   <hr/>
-                   <p>2 - O meu pet gosta muito de carinho</p>   
+                    <h4>Exemplos de descrição:</h4>
+                    <p>1 - O meu pet tem problemas nas patas da esquerda e requer cuidado especial</p>
+                    <hr />
+                    <p>2 - O meu pet gosta muito de carinho</p>
                 </div>
             </div>
 
         </fieldset>
     </form>
-    <!--<div><?php include('footer.php');?></div>-->
-   </body>
-</html>
+    <!--<div><?php include('footer.php'); ?></div>-->
+</body>
 
+</html>

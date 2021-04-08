@@ -8,7 +8,7 @@
         try  
         {  
             //$select = "select * from usuarios";
-            $serverName = "DESKTOP-4L8OM6D";
+            $serverName = "PC-JOAO\SQLEXPRESS";
 			$connectionInfo = array("Database"=>"PETPLACE");
 			$conn = sqlsrv_connect( $serverName, $connectionInfo);
            
@@ -30,7 +30,7 @@
     {  
         try  
         {  
-            $serverName = "DESKTOP-4L8OM6D";
+            $serverName = "PC-JOAO\SQLEXPRESS";
             $connectionInfo = array("Database"=>"PETPLACE");
             $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
