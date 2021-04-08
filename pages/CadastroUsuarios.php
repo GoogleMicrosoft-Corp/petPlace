@@ -62,19 +62,52 @@
 <body>
     <div><?php include('header.php'); ?></div>
     <?php
+
+    function prepareImageDBString($filepath)
+    {
+        $out = 'null';
+        $handle = @fopen($filepath, 'rb');
+        if ($handle) {
+            $content = @fread($handle, filesize($filepath));
+            $content = base64_encode($content);
+            @fclose($handle);
+            $out =  $content;
+        }
+        return $out;
+    }
+
+    if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
+        $filename = $_FILES["photo"]["tmp_name"];  
+        $out = prepareImageDBString($filename);
+        
+        echo '
+        <div style="width: 100%;  height: 70px;padding: 0;
+                    display: -webkit-box;display: -webkit-flex;
+                    display: -moz-box;display: -ms-flexbox;display: flex;
+                    flex-wrap: wrap;justify-content: center;align-items: center;"> 
+                
+                    <img style="height: 60px; width: 60px;border-radius: 
+                                50%;object-fit: cover;object-position: center;" 
+                    src="data:image/jpg;base64,' . $out . '" /> 
+        </div>';
+    }
+
     $var = $_SESSION['nome'];
     include('view/conn.php');
     $conn = new conexao;
+
+
+    //$conn->UPDATERETURN ("INSERT INTO IMAGES(imgtype) VALUES($out) ");
 
     if (isset($_POST["Cadastro"])) {
         if ($_POST["Cadastro"] == 2) {
             $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
             $_SESSION['nome'] = $_POST["Nome"];
-            header("Location: CadastroUsuarios.php");
+            //header("Location: CadastroUsuarios.php");
         } else {
             $conn->UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
             $_SESSION['nome'] = $_POST["Nome"];
-            header("Location: CadastroUsuarios.php");
+            //header("Location: CadastroUsuarios.php");
         }
     } else {
 
@@ -83,7 +116,7 @@
     }
     ?>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Usuários</legend>
             <div>
@@ -122,7 +155,7 @@
             </div>
             <div>
                 <label for="imgPet">Insira sua foto</label><br>
-                <input id="imgPet" class="normalizadorlayout" name="imgPet" type="file" accept="image/*" >
+                <input id="imgPet" class="normalizadorlayout" name="photo" type="file" accept="image/*">
             </div>
 
             <div>
@@ -134,7 +167,6 @@
             </div>
         </fieldset>
     </form>
-    <!--<div><?php include('footer.php'); ?></div>-->
 </body>
 
 </html>
