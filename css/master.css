@@ -4,6 +4,11 @@ body{
 }
 
 .header-master{
+	
+                    display: -webkit-box;display: -webkit-flex;
+                    display: -moz-box;display: -ms-flexbox;display: flex;
+                    flex-wrap: wrap;justify-content: center;align-items: center;
+
 	height: 70px;
 	padding: 0;  
 	background: -webkit-linear-gradient(-135deg, #066355,#03A865);
@@ -29,7 +34,7 @@ body{
 
 ul {
     list-style-type: none;
-    float: right;
+    /*float: right;*/
     padding: 5px;
     overflow: hidden;
 }
