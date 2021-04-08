@@ -76,24 +76,21 @@
         return $out;
     }
 
-
-    $out = '';
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
         $filename = $_FILES["photo"]["tmp_name"];  
         $out = prepareImageDBString($filename);
-
-        //header("Content-type: image/jpg");
-        echo '<img style="	height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: center;" src="data:image/jpg;base64,' . $out . '" />';
-
-
-        //echo '<img src="data:image/gif;base64,' . $out . '" />';
+        
+        echo '
+        <div style="width: 100%;  height: 70px;padding: 0;
+                    display: -webkit-box;display: -webkit-flex;
+                    display: -moz-box;display: -ms-flexbox;display: flex;
+                    flex-wrap: wrap;justify-content: center;align-items: center;"> 
+                
+                    <img style="height: 60px; width: 60px;border-radius: 
+                                50%;object-fit: cover;object-position: center;" 
+                    src="data:image/jpg;base64,' . $out . '" /> 
+        </div>';
     }
-
-    //echo $out;
 
     $var = $_SESSION['nome'];
     include('view/conn.php');
@@ -170,7 +167,6 @@
             </div>
         </fieldset>
     </form>
-    <!--<div><?php include('footer.php'); ?></div>-->
 </body>
 
 </html>
