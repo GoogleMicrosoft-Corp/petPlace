@@ -65,24 +65,12 @@
 
     $var = $_SESSION['nome'];
     include('view/conn.php');
+    include('view/binarios.php');
     $conn = new conexao;
-
-    function prepareImageDBString($filepath)
-    {
-        $out = 'null';
-        $handle = @fopen($filepath, 'rb');
-        if ($handle) {
-            $content = @fread($handle, filesize($filepath));
-            $content = base64_encode($content);
-            @fclose($handle);
-            $out =  $content;
-        }
-        return $out;
-    }
 
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
         $filename = $_FILES["photo"]["tmp_name"];  
-        $out = prepareImageDBString($filename);
+        $out = ImgParaBase64($filename);
         
         $conn->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id']  );
         $conn->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (". $_SESSION['id'] ." , '" . $out . "' , 'jpg' )");
@@ -93,11 +81,11 @@
         if ($_POST["Cadastro"] == 2) {
             $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
             $_SESSION['nome'] = $_POST["Nome"];
-            //header("Location: CadastroUsuarios.php");
+            header("Location: CadastroUsuarios.php");
         } else {
             $conn->UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
             $_SESSION['nome'] = $_POST["Nome"];
-            //header("Location: CadastroUsuarios.php");
+            header("Location: CadastroUsuarios.php");
         }
     } 
     
