@@ -110,8 +110,11 @@ select {
   }
   .card:hover {
 	box-shadow: 0 8px 20px 0 rgba(0,0,0,0.5);
+	background-color: #fff;
+	-webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
   }
-  
   .container {
 	padding: 2px 16px;
   }

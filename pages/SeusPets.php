@@ -8,6 +8,12 @@
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../css/master.css">
     <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <script type="text/javascript">
+        function redirpage(){
+            window.location.href ='CadastrarPet.php';
+        }
+    </script>
+
 </head>
 
 <body>
@@ -21,35 +27,49 @@
             <div style="display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px; margin-bottom: -28px">
-                <button name="Cadastro" class="btn_" style="width: 20%;" type="submit">Novo Pet</button>
+                <button  onclick="redirpage();" class="btn_" style="width: 20%;" type="button">Novo Pet</button>
             </div>
-
             <hr>
-
             <div style="display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%">
 
+                <?php
+                    include('view/conn.php');
+                    $conn = new conexao;
+                    $pet = $conn -> SelectReturn("SELECT * FROM PETS WHERE DOADOR_ID = " . $_SESSION['id'] );                        
+                        
+                    if (count($pet) > 1)
+                    { 
+                        for ($i = 1; $i < count($pet); $i++)
+                        {
+                            $especie ='';
+                            if($pet[1][2] == '1'){$especie = 'CACHORRO';}
+                            else if($pet[1][2] == '2'){$especie = 'GATO';}
+                            else if($pet[1][2] == '3'){$especie = 'PAPAGAIO';}
+                            else if($pet[1][2] == '4'){$especie = 'PERIQUITO';}
+                            else if($pet[1][2] == '5'){$especie = 'CAMUNDONGO';}
 
-
-                <div class="card">
-                    <img src="../images/doge.jpg" alt="Avatar" style="width:100%; border-radius: 50%;
-                	object-fit: cover; object-position: center;">
-                    <hr>
-                    <div class="container" style="text-align: center;">
-                        <h4><b>Doge</b></h4>
-                        <p>Espécie: Cachorro</p>
-                    </div>
-                </div>
+                            echo '<div class="card">
+                                    <img src="../images/doge.jpg" alt="Avatar" style="width:100%; border-radius: 50%;
+                                    object-fit: cover; object-position: center;">
+                                    <hr>
+                                    <div class="container" style="text-align: center;">
+                                        <h4><b>'. $pet[1][1] . '</b></h4>
+                                        <p>'. $especie .'</p>
+                                    </div>
+                                </div>';
+                        }
+                    }
+                    else{ 
+                        echo '<div class="card">    
+                                <div class="container" style="text-align: center;">
+                                    <h4><b>Não possui Pets cadastrados</b></h4>
+                                </div>
+                            </div>';
+                    }
+                ?>
             </div>
-
-            
-            <hr>
-
-            
-
-
-
         </fieldset>
     </form>
 </body>
