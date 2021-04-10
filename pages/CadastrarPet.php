@@ -15,16 +15,24 @@
 
     <?php
 
-    /*if (isset($_GET["idpet"]))
-    {
-        //ainda não faz nada
-    }
-    */
-
-
     $var = $_SESSION['nome'];
     include('view/conn.php');
     $conn = new conexao;
+    include('view/binarios.php');
+
+    function inserefoto($id){
+        $conn2 = new conexao;
+        if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0)
+        {
+            $filename = $_FILES["photo"]["tmp_name"];  
+            $out = ImgParaBase64($filename);
+            
+            $conn2->UPDATERETURN("UPDATE IMAGEM_PET SET ATUAL='N' WHERE PET_ID = " . $id  );
+            $conn2->UPDATERETURN("INSERT INTO IMAGEM_PET (PET_ID, DADOS , TIPO, ATUAL) values (". $id .
+            " , '" . $out . "' , 'jpg' , 'S')");            
+        }
+    }
+
 
     if (isset($_POST["Cadastro"])) {
         if ($_POST["Cadastro"] == 2) {
@@ -33,7 +41,14 @@
             header("Location: CadastroUsuarios.php");
         } else {
             $conn->UPDATERETURN("insert into PETS values ('" . $_POST["NomePet"] . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . $_POST["DescPet"] . "', '" . $_SESSION['id'] . "')");
-            $_SESSION['nome'] = $_POST["Cadastro"];
+            $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS");                        
+             
+            if (count($max) > 1)
+            { 
+                inserefoto($max[1][0]);
+            }            
+            
+            //$_SESSION['nome'] = $_POST["Cadastro"];
             header("Location: CadastrarPet.php");
         }
     } 
@@ -41,7 +56,7 @@
 
 
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Pets</legend>
             <div style="width: 45%; display: inline-block;">
@@ -78,7 +93,7 @@
                 </div>
                 <div>
                     <label for="imgPet">Cadastre Aqui a Foto de Perfil do seu PET</label><br>
-                    <input id="imgPet" name="imgPet" type="file">
+                    <input id="imgPet" class="normalizadorlayout" name="photo" type="file" accept="image/*">
                 </div>
                 <br>
                 <div>
