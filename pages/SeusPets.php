@@ -44,11 +44,11 @@
                         for ($i = 1; $i < count($pet); $i++)
                         {
                             $especie ='';
-                            if($pet[1][2] == '1'){$especie = 'CACHORRO';}
-                            else if($pet[1][2] == '2'){$especie = 'GATO';}
-                            else if($pet[1][2] == '3'){$especie = 'PAPAGAIO';}
-                            else if($pet[1][2] == '4'){$especie = 'PERIQUITO';}
-                            else if($pet[1][2] == '5'){$especie = 'CAMUNDONGO';}
+                            if($pet[$i ][2] == '1'){$especie = 'CACHORRO';}
+                            else if($pet[$i ][2] == '2'){$especie = 'GATO';}
+                            else if($pet[$i ][2] == '3'){$especie = 'PAPAGAIO';}
+                            else if($pet[$i ][2] == '4'){$especie = 'PERIQUITO';}
+                            else if($pet[$i ][2] == '5'){$especie = 'CAMUNDONGO';}
 
                             $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
 
