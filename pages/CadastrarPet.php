@@ -45,6 +45,9 @@
             
             $petid = $conn -> SelectReturn("select max(PET_ID) as ID from PETS");
             $conn->UPDATERETURN("insert into POST values ('" . $petid[1][0] . "', '" . $_POST["DescPet"] . "', 'N')");
+            
+            $postid = $conn -> SelectReturn("select max(POST_ID) as ID from POST");
+            $conn->UPDATERETURN("insert into DOADOR values ('" . $_SESSION['id'] . "', '" . $petid[1][0] . "', '" . $postid[1][0] . "', 'N')");
              
             if (count($max) > 1)
             { 

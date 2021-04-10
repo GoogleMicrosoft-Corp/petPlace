@@ -68,3 +68,11 @@ create table POST(
   DESCRICAO VARCHAR(1000),
   ADOTADO CHAR(1)
 )
+
+-----
+create table DOADOR(
+  DOADOR_ID INT,
+  PET_ID INT,
+  POST_ID INT,
+  ADOTADO CHAR(1)
+)
