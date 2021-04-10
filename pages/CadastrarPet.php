@@ -41,7 +41,10 @@
             header("Location: CadastroUsuarios.php");
         } else {
             $conn->UPDATERETURN("insert into PETS values ('" . $_POST["NomePet"] . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . $_POST["DescPet"] . "', '" . $_SESSION['id'] . "')");
-            $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS");                        
+            $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS");
+            
+            $petid = $conn -> SelectReturn("select max(PET_ID) as ID from PETS");
+            $conn->UPDATERETURN("insert into POST values ('" . $petid[1][0] . "', '" . $_POST["DescPet"] . "', 'N')");
              
             if (count($max) > 1)
             { 
