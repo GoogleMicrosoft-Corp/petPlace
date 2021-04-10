@@ -50,7 +50,8 @@
                             else if($pet[1][2] == '4'){$especie = 'PERIQUITO';}
                             else if($pet[1][2] == '5'){$especie = 'CAMUNDONGO';}
 
-                            echo '<div class="card">
+                            $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
+                            echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
                                     <img src="../images/doge.jpg" alt="Avatar" style="width:100%; border-radius: 50%;
                                     object-fit: cover; object-position: center;">
                                     <hr>
@@ -62,7 +63,7 @@
                         }
                     }
                     else{ 
-                        echo '<div class="card">    
+                        echo '<div class="card">
                                 <div class="container" style="text-align: center;">
                                     <h4><b>Não possui Pets cadastrados</b></h4>
                                 </div>

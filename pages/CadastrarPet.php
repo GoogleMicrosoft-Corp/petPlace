@@ -14,6 +14,14 @@
     <div><?php include('header.php'); ?></div>
 
     <?php
+
+    /*if (isset($_GET["idpet"]))
+    {
+        //ainda não faz nada
+    }
+    */
+
+
     $var = $_SESSION['nome'];
     include('view/conn.php');
     $conn = new conexao;
@@ -28,11 +36,7 @@
             $_SESSION['nome'] = $_POST["Cadastro"];
             header("Location: CadastrarPet.php");
         }
-    } else {
-
-        //$_POST["Nome"] = $_SESSION['nome'];
-        //$_POST["Email"] = $_SESSION['email'];            
-    }
+    } 
     ?>
 
 
