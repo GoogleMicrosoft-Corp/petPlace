@@ -55,7 +55,7 @@
                                     object-fit: cover; object-position: center;">
                                     <hr>
                                     <div class="container" style="text-align: center;">
-                                        <h4><b>'. $pet[1][1] . '</b></h4>
+                                        <h4><b>'. $pet[$i][1] . '</b></h4>
                                         <p>'. $especie .'</p>
                                     </div>
                                 </div>';

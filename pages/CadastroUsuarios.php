@@ -63,6 +63,10 @@
     <div><?php include('header.php'); ?></div>
     <?php
 
+    $var = $_SESSION['nome'];
+    include('view/conn.php');
+    $conn = new conexao;
+
     function prepareImageDBString($filepath)
     {
         $out = 'null';
@@ -80,24 +84,10 @@
         $filename = $_FILES["photo"]["tmp_name"];  
         $out = prepareImageDBString($filename);
         
-        echo '
-        <div style="width: 100%;  height: 70px;padding: 0;
-                    display: -webkit-box;display: -webkit-flex;
-                    display: -moz-box;display: -ms-flexbox;display: flex;
-                    flex-wrap: wrap;justify-content: center;align-items: center;"> 
-                
-                    <img style="height: 60px; width: 60px;border-radius: 
-                                50%;object-fit: cover;object-position: center;" 
-                    src="data:image/jpg;base64,' . $out . '" /> 
-        </div>';
+        $conn->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id']  );
+        $conn->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (". $_SESSION['id'] ." , '" . $out . "' , 'jpg' )");
+   
     }
-
-    $var = $_SESSION['nome'];
-    include('view/conn.php');
-    $conn = new conexao;
-
-
-    //$conn->UPDATERETURN ("INSERT INTO IMAGES(imgtype) VALUES($out) ");
 
     if (isset($_POST["Cadastro"])) {
         if ($_POST["Cadastro"] == 2) {
@@ -109,12 +99,27 @@
             $_SESSION['nome'] = $_POST["Nome"];
             //header("Location: CadastroUsuarios.php");
         }
-    } else {
-
-        //$_POST["Nome"] = $_SESSION['nome'];
-        //$_POST["Email"] = $_SESSION['email'];            
-    }
+    } 
+    
     ?>
+
+    <?php  
+        $userperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id'] );   
+
+        if (count($userperfil) > 1){
+            echo '
+                <div style="width: 100%;  height: 70px;padding: 0;
+                            display: -webkit-box;display: -webkit-flex;
+                            display: -moz-box;display: -ms-flexbox;display: flex;
+                            flex-wrap: wrap;justify-content: center;align-items: center;"> 
+                        
+                            <img style="height: 60px; width: 60px;border-radius: 
+                                        50%;object-fit: cover;object-position: center;" 
+                            src="data:image/jpg;base64,' . $userperfil[1][2] . '" /> 
+                </div>';
+        }
+    ?>
+
 
     <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
@@ -159,11 +164,13 @@
             </div>
 
             <div>
-                <button name="Cadastro" class="btn_" type="submit" value="<?php if ($_SESSION['id'] == "") {
-                                                                                echo 1;
-                                                                            } else {
-                                                                                echo 2;
-                                                                            } ?>">Cadastrar</button>
+                <button name="Cadastro" class="btn_" type="submit" 
+                value="<?php if ($_SESSION['id'] == "") 
+                {
+                    echo 1;
+                } else {
+                    echo 2;
+                } ?>">Cadastrar</button>
             </div>
         </fieldset>
     </form>
