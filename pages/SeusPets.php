@@ -51,15 +51,34 @@
                             else if($pet[1][2] == '5'){$especie = 'CAMUNDONGO';}
 
                             $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
-                            echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
-                                    <img src="../images/doge.jpg" alt="Avatar" style="width:100%; border-radius: 50%;
-                                    object-fit: cover; object-position: center;">
-                                    <hr>
-                                    <div class="container" style="text-align: center;">
-                                        <h4><b>'. $pet[$i][1] . '</b></h4>
-                                        <p>'. $especie .'</p>
-                                    </div>
-                                </div>';
+
+                            $petperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_PET WHERE ATUAL = 'S' AND PET_ID = " . $pet[$i][0] );
+                               
+                            if (count($petperfil) > 1){
+                                echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
+                                        <img 
+                                        src="data:image/jpg;base64,' . $petperfil[1][2] . '"
+                                        alt="Avatar" style="width: 100%; height: 230px; border-radius:  10px;
+                                        object-fit: cover; object-position: center;">
+                                        <hr>
+                                        <div class="container" style="text-align: center;">
+                                            <h4><b>'. $pet[$i][1] . '</b></h4>
+                                            <p>'. $especie .'</p>
+                                        </div>
+                                    </div>';
+                            }
+                            else{
+                                echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
+                                <img src="../images/doge.jpg" alt="Avatar" style="width: 100%; height: 230px; border-radius: 10px;
+                                object-fit: cover; object-position: center;">
+                                <hr>
+                                <div class="container" style="text-align: center;">
+                                    <h4><b>'. $pet[$i][1] . '</b></h4>
+                                    <p>'. $especie .'</p>
+                                </div>
+                            </div>';
+                            }
+
                         }
                     }
                     else{ 
