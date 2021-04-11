@@ -35,6 +35,10 @@
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%">
 
                 <?php
+                    if(!isset($_SESSION['id'])){
+                        header("Location: ../index.php");
+                    }
+
                     include('view/conn.php');
                     $conn = new conexao;
                     $pet = $conn -> SelectReturn("SELECT * FROM PETS WHERE DOADOR_ID = " . $_SESSION['id'] );                        
@@ -54,7 +58,8 @@
 
                             $petperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_PET WHERE ATUAL = 'S' AND PET_ID = " . $pet[$i][0] );
                                
-                            if (count($petperfil) > 1){
+                            if (count($petperfil) > 1)
+                            {
                                 echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
                                         <img 
                                         src="data:image/jpg;base64,' . $petperfil[1][2] . '"
@@ -67,7 +72,8 @@
                                         </div>
                                     </div>';
                             }
-                            else{
+                            else
+                            {
                                 echo '<div class="card" onclick="window.location.href = \''. $idpet .' \' ">
                                 <img src="../images/doge.jpg" alt="Avatar" style="width: 100%; height: 230px; border-radius: 10px;
                                 object-fit: cover; object-position: center;">
@@ -78,7 +84,6 @@
                                 </div>
                             </div>';
                             }
-
                         }
                     }
                     else{ 

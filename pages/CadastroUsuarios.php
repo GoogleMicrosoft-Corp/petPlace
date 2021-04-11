@@ -63,6 +63,10 @@
     <div><?php include('header.php'); ?></div>
     <?php
 
+    if(!isset($_SESSION['id'])){
+        header("Location: ../index.php");
+    }
+
     $var = $_SESSION['nome'];
     include('view/conn.php');
     include('view/binarios.php');
