@@ -87,7 +87,7 @@
             $_SESSION['nome'] = $_POST["Nome"];
             header("Location: CadastroUsuarios.php");
         } else {
-            $conn->UPDATERETURN("insert into usuarios values ('" . $_POST["Nome"] . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . $_POST["Desc"] . "', '" . $_POST["Endereço"] . "')");
+            $conn->UPDATERETURN("insert into usuarios values ('" . utf8_decode($_POST["Nome"]) . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . utf8_decode($_POST["Desc"]) . "', '" . $_POST["Endereço"] . "')");
             $_SESSION['nome'] = $_POST["Nome"];
             header("Location: CadastroUsuarios.php");
         }
