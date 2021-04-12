@@ -120,14 +120,14 @@
             <legend>Cadastro de Usuários</legend>
             <div>
                 <label for="txtNome">Nome</label><br>
-                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout width95porcem" value="
-                <?php if (isset($_SESSION['nome'])){echo $_SESSION['nome'];}else{echo '';}?>">
+                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout width95porcem" 
+                value="<?php if (isset($_SESSION['nome'])){echo $_SESSION['nome'];}else{echo '';}?>">
             </div>
 
             <div>
                 <label for="txtEmail">E-mail</label><br>
-                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout width95porcem" value="
-                <?php if (isset($_SESSION['email'])){echo $_SESSION['email'];}else{echo '';}?>">
+                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout width95porcem"
+                value="<?php if (isset($_SESSION['email'])){echo $_SESSION['email'];}else{echo '';}?>">
             </div>
 
             <div style="display: inline-block;">
