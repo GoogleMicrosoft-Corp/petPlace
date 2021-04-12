@@ -63,11 +63,11 @@
     <div><?php include('header.php'); ?></div>
     <?php
 
-    if(!isset($_SESSION['id'])){
-        header("Location: ../index.php");
-    }
+    //if(!isset($_SESSION['id'])){
+    //    header("Location: ../index.php");
+    //}
 
-    $var = $_SESSION['nome'];
+    //$var = $_SESSION['nome'];
     include('view/conn.php');
     include('view/binarios.php');
     $conn = new conexao;
@@ -96,6 +96,7 @@
     ?>
 
     <?php  
+    if (isset($_SESSION['id'])){
         $userperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id'] );   
 
         if (count($userperfil) > 1){
@@ -110,6 +111,7 @@
                             src="data:image/jpg;base64,' . $userperfil[1][2] . '" /> 
                 </div>';
         }
+    }
     ?>
 
 
@@ -118,12 +120,14 @@
             <legend>Cadastro de Usuários</legend>
             <div>
                 <label for="txtNome">Nome</label><br>
-                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout width95porcem" value="<?php echo $_SESSION['nome']; ?>">
+                <input id="txtNome" name="Nome" type="text" class="normalizadorlayout width95porcem" value="
+                <?php if (isset($_SESSION['nome'])){echo $_SESSION['nome'];}else{echo '';}?>">
             </div>
 
             <div>
                 <label for="txtEmail">E-mail</label><br>
-                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout width95porcem" value="<?php echo $_SESSION['email']; ?>">
+                <input id="txtEmail" name="Email" type="text" class="normalizadorlayout width95porcem" value="
+                <?php if (isset($_SESSION['email'])){echo $_SESSION['email'];}else{echo '';}?>">
             </div>
 
             <div style="display: inline-block;">

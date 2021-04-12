@@ -16,7 +16,7 @@
 		</div>-->
 
         <ul style="display: inline;">		  
-		  <li><a href="#">Publicações</a></li>
+		  <li><a href="Publicacoes.php">Publicações</a></li>
 		  <li><a href="#">Adotar</a></li>		  
 		  <li><a href="#">Conversas</a></li>
 		  <li><a href="CadastroUsuarios.php">Seu Perfil</a></li>

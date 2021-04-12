@@ -43,12 +43,13 @@
             $conn->UPDATERETURN("insert into PETS values ('" . $_POST["NomePet"] . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . $_POST["DescPet"] . "', '" . $_SESSION['id'] . "')");
             $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS");
             
-            $petid = $conn -> SelectReturn("select max(PET_ID) as ID from PETS");
+            /*$petid = $conn -> SelectReturn("select max(PET_ID) as ID from PETS");
             $conn->UPDATERETURN("insert into POST values ('" . $petid[1][0] . "', '" . $_POST["DescPet"] . "', 'N')");
             
             $postid = $conn -> SelectReturn("select max(POST_ID) as ID from POST");
             $conn->UPDATERETURN("insert into DOADOR values ('" . $_SESSION['id'] . "', '" . $petid[1][0] . "', '" . $postid[1][0] . "', 'N')");
-             
+            */
+            
             if (count($max) > 1)
             { 
                 inserefoto($max[1][0]);

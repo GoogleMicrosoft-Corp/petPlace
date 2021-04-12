@@ -20,6 +20,10 @@
                     <img src="images/img-01.png" alt="IMG" style="border-radius: 20%;">                    
                 </div>
                 <?php
+                    session_start();
+                    session_destroy();
+
+
                     if(isset($_POST["login"]))
                     {
                         include('pages/view/conn.php');
@@ -64,18 +68,9 @@
                             Login
                         </button>
                     </div>
-
-                    <div class="text-center">
-                        <span class="txt1">
-                            Esqueceu
-                        </span>
-                        <a class="txt2" href="#">
-                            login ou senha?
-                        </a>
-                    </div>
-
+                    
                     <div class="text-center padding-50">
-                        <a class="txt2" href="#">
+                        <a class="txt2" href="pages/CadastroUsuarios.php">
                             Nova conta                            
                         </a>
                     </div>
