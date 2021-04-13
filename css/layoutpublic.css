@@ -1,0 +1,78 @@
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 55%;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+.container .cardb {
+    position:relative;
+    min-width: 320px;
+    width: 95%;
+    height: 500px;
+    box-shadow: inset 5px 5px 5px rgb(0,0,0,0.05),
+                inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+                       5px 5px 5px rgb(0,0,0,0.05),
+                      -5px -5px 5px rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    margin: 30px;
+}
+.container .cardb .caixa {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #ebf5fc;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    transition: 0.5s;
+}
+.container .cardb .caixa .conteudo {
+    padding: 20px;
+    text-align: center;
+}
+.container .cardb .caixa .conteudo h2 {
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 8em;
+    color: rgba(0,0,0,0.02);
+    transition: 0.5s;
+    pointer-events: none;
+}
+.container .cardb .caixa .conteudo h3 {
+    font-size: 1.8em;
+    color: #777;
+    z-index: 1;
+    transition: 0.5s;
+}
+.container .cardb .caixa .conteudo p {
+    font-size: 1em;
+    font-weight: 300;
+    color: #878;
+    z-index: 1;
+    transition: 0.5s;   
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.container .cardb .caixa .conteudo a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: #03A865;
+    margin-top: 15px;
+    border-radius: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+.container .cardb:hover .caixa .conteudo a {
+    background: #066355;
+}

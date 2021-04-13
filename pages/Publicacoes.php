@@ -8,12 +8,26 @@
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../css/master.css">
     <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/layoutpublic.css">
     <script type="text/javascript">
         function redirpage(){
             window.location.href ='CadastroPublicacoes.php';
         }
-    </script>
 
+        function sliderAnt(prev, atual, prox){
+            if (prev != ""){
+                document.getElementById(atual).style.display='none';
+                document.getElementById(prev).style.display='block';
+            }
+        }
+
+        function sliderProx(prev, atual, prox){
+            if (prox != ""){
+                document.getElementById(atual).style.display='none';
+                document.getElementById(prox).style.display='block';
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -30,7 +44,24 @@
                 <button  onclick="redirpage();" class="btn_" style="width: 20%;" type="button">Publicar</button>
             </div>
             <hr>
+            <div style="display: -webkit-box;display: -webkit-flex;
+                        display: -moz-box;display: -ms-flexbox;display: flex;
+                        flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;
+                         margin-bottom: -28px">
+                <?php include('ListaPublicacoes.php'); ?>
+
+                <div style="display: -webkit-box;display: -webkit-flex;
+                        display: -moz-box;display: -ms-flexbox;display: flex;
+                        flex-wrap: wrap;justify-content: center;align-items: center; width: 25%; margin: 20px;">
+                    
+                    <div id="slider1">  
+                        <?php include('ListaAnimaisPerdidos.php'); ?>                                               
+                    </div>                    
+                </div>
+            </div>
+
             
+
         </fieldset>
     </form>
 </body>

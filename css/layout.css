@@ -1,4 +1,3 @@
-
 body { 
   color: #384047;
 }
@@ -98,7 +97,6 @@ select {
 	width: 95%;
 }
 
-
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	transition: 0.3s;
@@ -125,3 +123,17 @@ select {
 		width: 200px;
 	}
   }
+
+  .cardmin {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	line-height: 20px;
+	width: 150px;
+	border: 1px solid rgb(163, 157, 157);
+	border-radius: 10px;	
+	vertical-align: top;
+  }
+
+
+
+ 
