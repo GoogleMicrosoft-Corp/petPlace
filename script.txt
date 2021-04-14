@@ -90,3 +90,14 @@ create table DOADOR(
   POST_ID INT,
   ADOTADO CHAR(1)
 )
+------
+create table PetsPerdidos(
+  PET_PERDIDO INT PRIMARY KEY IDENTITY(1,1),
+  NOME_PET VARCHAR(200),
+  TIPO_PET INT,
+  SEXO CHAR(1),
+  IDADE INT,
+  DESCRICAO varchar(1000),
+  USUARIO_ID INT,
+  DATA DATETIME,
+)
