@@ -2,7 +2,7 @@
     //include('view/conn.php');
     //$conn = new conexao;
 
-    $pet = $conn -> SelectReturn("SELECT * FROM PETS" );
+    $pet = $conn -> SelectReturn("SELECT * FROM PETS_PERDIDOS" );
     if (count($pet) > 1)
     { 
         for ($i = 1; $i < count($pet); $i++)
@@ -16,7 +16,7 @@
 
             $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
 
-            $petperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_PET WHERE ATUAL = 'S' AND PET_ID = " . $pet[$i][0] );
+            $petperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_PET_PERDIDO WHERE ATUAL = 'S' AND PET_ID = " . $pet[$i][0] );
             
             $style = '';
             if ($i == 1){

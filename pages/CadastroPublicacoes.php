@@ -15,8 +15,8 @@
 
     <?php
 
-    include('view/conn.php');
-    $conn = new conexao;
+    //include('view/conn.php');
+    //$conn = new conexao;
     include('view/binarios.php');
 
 
@@ -33,7 +33,7 @@
 
     if (isset($_POST["Cadastro"])) {
         $conn->UPDATERETURN(@"INSERT INTO POST(PET_ID, USUARIO_ID, DESCRICAO, STATUS_PUBLICACAO, IMAGEM , TIPO_IMAGEM 
-        , DATA) VALUES(".$_POST["TipoPet"]."  , ".$_SESSION['id']." ,'".utf8_decode($_POST["DescPet"])."','PENDENTE',".inserefoto().",'jpg',GETDATE())");
+        , DATA) VALUES(".$_POST["TipoPet"]."  , ".$_SESSION['id']." ,'".$_POST["DescPet"]."','PENDENTE',".inserefoto().",'jpg',GETDATE())");
         header("Location: Publicacoes.php");
     }
     

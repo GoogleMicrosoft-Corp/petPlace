@@ -61,7 +61,7 @@
     padding-bottom: 8px;
     padding-top: 8px;
 }
-.container .cardb .caixa .conteudo a {
+.container .cardb .caixa .conteudo .a_ {
     position: relative;
     display: inline-block;
     padding: 8px 20px;
@@ -73,6 +73,6 @@
     font-weight: 400;
     box-shadow: 0 10px 20px rgba(0,0,0,0.02);
 }
-.container .cardb:hover .caixa .conteudo a {
+.container .cardb:hover .caixa .conteudo .a_ {
     background: #066355;
 }

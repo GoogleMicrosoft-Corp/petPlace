@@ -49,14 +49,16 @@
             <div style="display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;
-                         margin-bottom: -28px">
-                
+                         ">
+                Pets Desaparecidos
+                    
                 <div style="float: right ;display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
-                        flex-wrap: wrap;justify-content: center;align-items: center; width: 25%; margin: 20px;">
-                    Pets Desaparecidos
-                    <br/>
+                        flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;">
+                    
+                    
                     <div id="slider1">  
+                    
                         <?php include('ListaAnimaisPerdidos.php'); ?>                                               
                     </div>                    
                 </div>

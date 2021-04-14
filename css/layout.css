@@ -135,5 +135,11 @@ select {
   }
 
 
+  @media (max-width: 560px) {
+	.fieldset-center{		
+		width: 200px;
+	}
+  }
+
 
  
