@@ -37,7 +37,7 @@
                             $_SESSION['nome'] = strtoupper($nome[1][1]);
                             $_SESSION['email'] = $nome[1][2];
 
-                            header("Location: pages/CadastrarPet.php");
+                            header("Location: pages/Publicacoes.php");
                             exit();
                         }//echo  "id: " . $nome[1][0] . "  Nome: " . $nome[1][1] ; 
                         else{

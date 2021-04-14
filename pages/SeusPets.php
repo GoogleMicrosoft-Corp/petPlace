@@ -39,8 +39,8 @@
                         header("Location: ../index.php");
                     }
 
-                    include('view/conn.php');
-                    $conn = new conexao;
+                    //include('view/conn.php');
+                    //$conn = new conexao;
                     $pet = $conn -> SelectReturn("SELECT * FROM PETS WHERE DOADOR_ID = " . $_SESSION['id'] );                        
                         
                     if (count($pet) > 1)

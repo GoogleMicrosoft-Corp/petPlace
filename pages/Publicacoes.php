@@ -44,22 +44,38 @@
                 <button  onclick="redirpage();" class="btn_" style="width: 20%;" type="button">Publicar</button>
             </div>
             <hr>
+
+            
             <div style="display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;
                          margin-bottom: -28px">
-                <?php include('ListaPublicacoes.php'); ?>
-
-                <div style="display: -webkit-box;display: -webkit-flex;
+                
+                <div style="float: right ;display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 25%; margin: 20px;">
-                    
+                    Pets Desaparecidos
+                    <br/>
                     <div id="slider1">  
                         <?php include('ListaAnimaisPerdidos.php'); ?>                                               
                     </div>                    
                 </div>
+                
+                
+
+                
+            </div>
+            <br/>
+            
+            <hr>
+            <div style="display: -webkit-box;display: -webkit-flex;
+                        display: -moz-box;display: -ms-flexbox;display: flex;
+                        flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;
+                         margin-bottom: -28px">
+                Adote <br/>
             </div>
 
+            <?php include('ListaPublicacoes.php'); ?>
             
 
         </fieldset>

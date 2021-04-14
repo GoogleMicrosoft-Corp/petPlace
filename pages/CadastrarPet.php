@@ -16,8 +16,8 @@
     <?php
 
     $var = $_SESSION['nome'];
-    include('view/conn.php');
-    $conn = new conexao;
+    //include('view/conn.php');
+    //$conn = new conexao;
     include('view/binarios.php');
 
     function inserefoto($id){

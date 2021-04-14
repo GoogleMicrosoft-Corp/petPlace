@@ -10,8 +10,7 @@
                         header("Location: ../index.php");
                     }
 
-                    include('view/conn.php');
-                    $conn = new conexao;
+                    
                     $POSTS = $conn -> SelectReturn("SELECT * FROM POST ORDER BY POST_ID DESC");                        
                         
                     if (count($POSTS) > 1)
@@ -20,7 +19,7 @@
                         {   
                             $P  = $conn -> SelectReturn("SELECT * FROM USUARIOS WHERE USUARIOS_ID = ". $POSTS[$i][2]);
                             $P2 = $conn -> SelectReturn("SELECT * FROM PETS WHERE PET_ID = ". $POSTS[$i][1] );
-                            
+                          
                             echo '<div class="container">
                                     <div class="cardb"> 
                                         <div class="caixa">

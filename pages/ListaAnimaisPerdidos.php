@@ -1,5 +1,6 @@
 <?php
-
+    //include('view/conn.php');
+    //$conn = new conexao;
 
     $pet = $conn -> SelectReturn("SELECT * FROM PETS" );
     if (count($pet) > 1)

@@ -68,27 +68,52 @@
     //}
 
     //$var = $_SESSION['nome'];
-    include('view/conn.php');
+    //include('view/conn.php');
     include('view/binarios.php');
-    $conn = new conexao;
+    //$conn = new conexao;
 
+    function inserefoto(){
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
         $filename = $_FILES["photo"]["tmp_name"];  
         $out = ImgParaBase64($filename);
-        
-        $conn->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id']  );
-        $conn->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (". $_SESSION['id'] ." , '" . $out . "' , 'jpg' )");
-   
+        $conn2 = new conexao;
+
+        if (isset($_SESSION['id']))
+        {
+            $conn2->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id']  );
+            $conn2->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (". $_SESSION['id'] ." , '" . $out . "' , 'jpg' )");
+        }
+        else {
+            $max = $conn2 -> SelectReturn("SELECT MAX(USUARIOS_ID) AS ID from USUARIOS");
+            $idnovo = '';
+            if (count($max) > 1)
+            {
+                $idnovo = $max[1][0];
+            }
+            else {
+                $idnovo = 1;
+            }
+            //$conn->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $idnovo  );
+            $conn2->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (". $idnovo ." , '" . $out . "' , 'jpg' )");
+     
+
+        }
+
     }
+}
 
     if (isset($_POST["Cadastro"])) {
         if ($_POST["Cadastro"] == 2) {
             $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
-            $_SESSION['nome'] = $_POST["Nome"];
+            if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
+                inserefoto();
+            }
             header("Location: CadastroUsuarios.php");
         } else {
             $conn->UPDATERETURN("insert into usuarios values ('" . utf8_decode($_POST["Nome"]) . "', '" . $_POST["Email"] . "', '" . $_POST["Senha"] . "', '" . $_POST["cpf"] . "', '" . $_POST["Telefone"] . "', '" . utf8_decode($_POST["Desc"]) . "', '" . $_POST["Endereço"] . "')");
-            $_SESSION['nome'] = $_POST["Nome"];
+            inserefoto();
+            $maxid = $conn -> SelectReturn("SELECT MAX(USUARIOS_ID) AS ID from USUARIOS");
+            $_SESSION['id'] = $maxid[1][0];
             header("Location: CadastroUsuarios.php");
         }
     } 
