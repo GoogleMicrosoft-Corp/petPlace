@@ -33,7 +33,7 @@
 
         <ul style="display: inline;">		  
 		  <li><a href="Publicacoes.php">Publicações</a></li>
-		  <li><a href="#">Adotar</a></li>		  
+		  <li><a href="Adotar.php">Adotar</a></li>		  
 		  <li><a href="Configuracoes.php">Configurações</a></li>
 		  <li><a href="CadastroUsuarios.php">Seu Perfil</a></li>
 		  <li><a href="SeusPets.php">Seus Pets</a></li>
