@@ -135,9 +135,24 @@
                 </div>
                 <div>
                     <label for="txtSexoPet">Sexo: </label>
-                    <input id="txtSexoPet1" name="txtSexoPet" type="radio" value="M">
+                    <input id="txtSexoPet1" name="txtSexoPet" 
+                    <?php
+
+                    if(isset($_GET["idpet"])){
+                        if($dadospet[1][3] =='M'){
+                            echo  'CHECKED';
+                        }
+                    } ?> 
+                    
+                    type="radio" value="M">
                     <label for="txtSexoPet1">Macho</label>
-                    <input id="txtSexoPet2" name="txtSexoPet" type="radio" value="F">
+                    <input id="txtSexoPet2" name="txtSexoPet" <?php
+                    
+                    if(isset($_GET["idpet"])){
+                        if($dadospet[1][3] =='F'){
+                            echo  'CHECKED';
+                        }
+                    } ?> type="radio" value="F">
                     <label for="txtSexoPet2">Fêmea</label>
                 </div>
                 <div>
