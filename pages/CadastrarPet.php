@@ -12,9 +12,7 @@
 
 <body>
     <div><?php include('header.php'); ?></div>
-
     <?php
-
     $var = $_SESSION['nome'];
     //include('view/conn.php');
     //$conn = new conexao;
@@ -32,8 +30,6 @@
             " , '" . $out . "' , 'jpg' , 'S')");            
         }
     }
-
-
     if (isset($_POST["Cadastro"])) {
         if ($_POST["Cadastro"] == 2) {
             $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
@@ -60,9 +56,6 @@
         }
     } 
     ?>
-
-
-
     <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Pets</legend>
@@ -75,12 +68,17 @@
                 <div>
                     <label for="ddlTipoPet">Espécie:</label>
                     <select class="normalizadorlayout" id="ddlTipoPet" name="TipoPet">
-                        <option value="">Selecione</option>
-                        <option value="1">Cachorro</option>
-                        <option value="2">Gato</option>
-                        <option value="3">Papagaio</option>
-                        <option value="4">Periquito</option>
-                        <option value="5">Camundongo</option>
+                        <?php
+                            $pet = $conn -> SelectReturn("SELECT * from ESPECIE");
+                            echo '<option value="">Selecione</option>';
+                            if (count($pet) > 1)
+                            { 
+                                for ($i = 1; $i < count($pet); $i++)
+                                {
+                                    echo '<option value="'. $pet[$i][0] .'">'.$pet[$i][1].'</option>';
+                                }
+                            }
+                        ?>
                     </select>
                 </div>
                 <div>

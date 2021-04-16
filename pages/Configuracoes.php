@@ -44,6 +44,27 @@
             header("Location: ../index.php");
         }
 
+        if (isset($_POST["Cadastropublicidades"])) {
+            if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
+                include('view/binarios.php');
+                $filename = $_FILES["photo"]["tmp_name"];  
+                $out = ImgParaBase64($filename);
+                
+                $conn -> UPDATERETURN("INSERT INTO PUBLICIDADE (IMAGEM) values ('" . $out . "')");     
+                //header("Location: Publicacoes.php");  
+                
+            }
+        }
+
+        if (isset($_POST["Cadastroespecie"])) {
+            if(isset($_POST['especie'])){
+                if ($_POST['especie'] != ''){
+                    $conn->UPDATERETURN("INSERT INTO ESPECIE VALUES ('".strtoupper($_POST['especie'])."')");
+                    header("Location: Publicacoes.php");  
+                }
+            }
+        }
+
         if (isset($_POST["Cadastro"])) {
                 $conn->UPDATERETURN("DELETE CONFIGURACOES WHERE USUARIO_ID = ".$_SESSION['id']);
                 $conn->UPDATERETURN("INSERT INTO CONFIGURACOES VALUES ('".$_POST['cor1']."','".$_POST['cor2']."', ". $_SESSION['id'] .")");
@@ -88,6 +109,27 @@
             <div>
                 <button name="Cadastro" class="btn_" type="submit">Salvar</button>
             </div>
+            <hr>
+            <div>
+                <label for="txtNomePet">Cadastrar Nova Especie: </label>
+                <input id="txtNomePet" name="especie" type="text" class="normalizadorlayout">
+            </div>
+           
+            <div>
+                <button name="Cadastroespecie" class="btn_" type="submit">Cadastar</button>
+            </div>
+            <hr>
+            <br/>
+            <div>
+                    <label for="imgPet">Cadastre aqui as marcas e publicidades: </label><br>
+                    <input id="imgPet" class="normalizadorlayout" name="photo" type="file" accept="image/*">
+                </div>
+           
+            <div>
+                <button name="Cadastropublicidades" class="btn_" type="submit">Cadastar</button>
+            </div>
+            <hr>
+            <br/>
 
         </fieldset>
     </form>

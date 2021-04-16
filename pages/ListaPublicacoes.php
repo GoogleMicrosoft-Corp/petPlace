@@ -30,7 +30,7 @@
                     }
 
                     
-                    $POSTS = $conn -> SelectReturn("SELECT * FROM POST ORDER BY POST_ID DESC");                        
+                    $POSTS = $conn -> SelectReturn("SELECT * FROM POST WHERE STATUS_PUBLICACAO ='PENDENTE' ORDER BY POST_ID DESC");                        
                         
                     if (count($POSTS) > 1)
                     { 
@@ -79,8 +79,14 @@
                                 </div>';                          
                         }
                     }
-                    else{ 
-                        echo '';
+                    else {
+                        echo '<br><div style="display: -webkit-box;display: -webkit-flex;
+                            display: -moz-box;display: -ms-flexbox;display: flex;flex-wrap: wrap;justify-content: center;align-items: 
+                            center; text-align: center">
+                                <div class="card">
+                                    <h4><b>Sem novas publicações no momento</b></h4>
+                                </div>
+                            </div>';
                     }
                 ?>
 

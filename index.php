@@ -27,7 +27,15 @@
                         include('pages/view/conn.php');
                         $conn = new conexao;
                         $nome = $conn -> SelectReturn("select * from usuarios where email='". $_POST["login"] ."' and usr_hash = '".$_POST["senha"]. "' ");                        
-                        
+                        $especie = $conn -> SelectReturn("SELECT * from ESPECIE");
+                        if(!(count($especie) > 1)){
+                            $conn -> UPDATERETURN("INSERT INTO ESPECIE (ESPECIE_NOME) values ('CACHORRO')");
+                            $conn -> UPDATERETURN("INSERT INTO ESPECIE (ESPECIE_NOME) values ('GATO')");
+                            $conn -> UPDATERETURN("INSERT INTO ESPECIE (ESPECIE_NOME) values ('PAPAGAIO')");
+                            $conn -> UPDATERETURN("INSERT INTO ESPECIE (ESPECIE_NOME) values ('PERIQUITO')");
+                            $conn -> UPDATERETURN("INSERT INTO ESPECIE (ESPECIE_NOME) values ('CAMUNDONGO')");
+                        }
+
                         if (count($nome) > 1)
                         { 
                             session_start();

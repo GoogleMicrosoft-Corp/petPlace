@@ -32,7 +32,16 @@
 
 <body>
     <div><?php include('header.php'); ?></div>
+    
+    <?php
+        $publicidade =  $conn->SelectReturn("SELECT * FROM PUBLICIDADE");
+        if (count($publicidade)>1)
+        {
+            echo '<iframe src="ListaPublicidade.php" width="100%" height="120">';
+        }
+    ?>
 
+</iframe>
 
     <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
@@ -62,10 +71,6 @@
                         <?php include('ListaAnimaisPerdidos.php'); ?>                                               
                     </div>                    
                 </div>
-                
-                
-
-                
             </div>
             <br/>
             
@@ -73,12 +78,12 @@
             <div style="display: -webkit-box;display: -webkit-flex;
                         display: -moz-box;display: -ms-flexbox;display: flex;
                         flex-wrap: wrap;justify-content: center;align-items: center; width: 100%; margin: 20px;
-                         margin-bottom: -28px">
+                         ">
                 Adote <br/>
-            </div>
-
-            <?php include('ListaPublicacoes.php'); ?>
             
+
+                <?php include('ListaPublicacoes.php'); ?>
+            </div>
 
         </fieldset>
     </form>

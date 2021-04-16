@@ -47,12 +47,8 @@
                     { 
                         for ($i = 1; $i < count($pet); $i++)
                         {
-                            $especie ='';
-                            if($pet[$i ][2] == '1'){$especie = 'CACHORRO';}
-                            else if($pet[$i ][2] == '2'){$especie = 'GATO';}
-                            else if($pet[$i ][2] == '3'){$especie = 'PAPAGAIO';}
-                            else if($pet[$i ][2] == '4'){$especie = 'PERIQUITO';}
-                            else if($pet[$i ][2] == '5'){$especie = 'CAMUNDONGO';}
+                            $especies = $conn -> SelectReturn("SELECT * from ESPECIE WHERE ESPECIE_ID = ".$pet[$i ][2]);
+                            $especie = $especies[1][1];                            
 
                             $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
 

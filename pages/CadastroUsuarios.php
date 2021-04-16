@@ -101,9 +101,9 @@
     }
 
     if (isset($_POST["Cadastro"])) {
-        $qtd = $conn->SelectReturn("select count(USUARIOS_ID) as qtd from USUARIOS where email ='" . $_POST["Email"] . "' ");
+        $qtd = $conn->SelectReturn("SELECT * from USUARIOS where email ='" . $_POST["Email"] . "' ");
 
-        if ($qtd >= 1) {
+        if ( (count($qtd)>1) && $_POST["Cadastro"] == '1'  ) {
             echo "<script> alerta('Já existe um usuário cadastrado com esse e-mail em nosso banco de dados!'); </script>";
         } else {
             if ($_POST["Cadastro"] == 2) {

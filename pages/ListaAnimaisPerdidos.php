@@ -7,14 +7,8 @@
     { 
         for ($i = 1; $i < count($pet); $i++)
         {
-            $especie ='';
-            if($pet[$i ][2] == '1'){$especie = 'CACHORRO';}
-            else if($pet[$i ][2] == '2'){$especie = 'GATO';}
-            else if($pet[$i ][2] == '3'){$especie = 'PAPAGAIO';}
-            else if($pet[$i ][2] == '4'){$especie = 'PERIQUITO';}
-            else if($pet[$i ][2] == '5'){$especie = 'CAMUNDONGO';}
-
-            $idpet = "CadastrarPet.php?idpet=" . $pet[$i][0];
+            $especies = $conn -> SelectReturn("SELECT * from ESPECIE WHERE ESPECIE_ID = ".$pet[$i ][2]);
+            $especie = $especies[1][1];              
 
             $petperfil = $conn -> SelectReturn("SELECT * FROM IMAGEM_PET_PERDIDO WHERE ATUAL = 'S' AND PET_ID = " . $pet[$i][0] );
             
@@ -76,7 +70,16 @@
                     
             }
             
+            
         }
+        
     }
-?>
-
+    else {
+        echo '<div style="display: -webkit-box;display: -webkit-flex;
+        display: -moz-box;display: -ms-flexbox;display: flex;flex-wrap: wrap;justify-content: center;align-items: 
+            center; text-align: center">
+                <div class="card">
+                    <h4><b>Sem pets perdidos no momento</b></h4>
+                </div>
+            </div>';
+    }
