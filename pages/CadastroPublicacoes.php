@@ -32,9 +32,18 @@
 
 
     if (isset($_POST["Cadastro"])) {
-        $conn->UPDATERETURN(@"INSERT INTO POST(PET_ID, USUARIO_ID, DESCRICAO, STATUS_PUBLICACAO, IMAGEM , TIPO_IMAGEM 
-        , DATA) VALUES(".$_POST["TipoPet"]."  , ".$_SESSION['id']." ,'".$_POST["DescPet"]."','PENDENTE',".inserefoto().",'jpg',GETDATE())");
-        header("Location: Publicacoes.php");
+        $fil= $_FILES["photo"]["tmp_name"];
+        $out2 = ImgParaBase64($fil);  
+        if (!($_POST["TipoPet"] == ''
+        || $_POST["DescPet"] == '') &&  $out2 != 'null' ) 
+        { 
+            $conn->UPDATERETURN(@"INSERT INTO POST(PET_ID, USUARIO_ID, DESCRICAO, STATUS_PUBLICACAO, IMAGEM , TIPO_IMAGEM 
+            , DATA) VALUES(".$_POST["TipoPet"]."  , ".$_SESSION['id']." ,'".$_POST["DescPet"]."','PENDENTE',".inserefoto().",'jpg',GETDATE())");
+            header("Location: Publicacoes.php");
+        }
+        else{
+            echo "<script> alert('Preencha todos os campos e insira uma foto!'); </script>";
+        } 
     }
     
     

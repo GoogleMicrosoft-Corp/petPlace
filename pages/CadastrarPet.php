@@ -71,13 +71,15 @@
                 header("Location: SeusPets.php");
             }
         } else {
+            $fil= $_FILES["photo"]["tmp_name"];
+            $out2 = ImgParaBase64($fil);  
+
             if (!($_POST["NomePet"] == ''
             || $_POST["TipoPet"] == ''
             || $_POST["txtSexoPet"] == ''
             || $_POST["IdadePet"] == ''
             || $_POST["DescPet"] == ''
-            || !isset($_FILES["photo"])
-            )) {
+            ) && $out2 != 'null') {
                 $conn->UPDATERETURN("insert into PETS values ('" . utf8_decode($_POST["NomePet"]) . "', '" 
                 . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" 
                 . $_POST["IdadePet"] . "', '" . utf8_decode($_POST["DescPet"]) . "', '" 

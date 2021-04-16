@@ -92,7 +92,6 @@
                 } else {
                     $idnovo = 1;
                 }
-                //$conn->UPDATERETURN("DELETE IMAGEM_USUARIO WHERE USUARIOS_ID = " . $idnovo  );
                 $conn2->UPDATERETURN("INSERT INTO IMAGEM_USUARIO (USUARIOS_ID, DADOS , TIPO) values (" . $idnovo . " , '" . $out . "' , 'jpg' )");
             }
         }
@@ -152,18 +151,15 @@
                 }
                 else{
                     echo "<script> alert('Preencha todos os campos e insira uma foto!'); </script>";
-                }
-                
+                }                
             }
         }
     }
-
     ?>
 
     <?php
     if (isset($_SESSION['id'])) {
         $userperfil = $conn->SelectReturn("SELECT * FROM IMAGEM_USUARIO WHERE USUARIOS_ID = " . $_SESSION['id']);
-
         if (count($userperfil) > 1) {
             echo '
                 <div style="width: 100%;  height: 70px;padding: 0;
@@ -178,8 +174,6 @@
         }
     }
     ?>
-
-
     <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
             <legend>Cadastro de Usuários</legend>

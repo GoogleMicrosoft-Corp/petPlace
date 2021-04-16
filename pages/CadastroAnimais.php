@@ -30,23 +30,29 @@
             " , '" . $out . "' , 'jpg' , 'S')");            
         }
     }
-    if (isset($_POST["Cadastro"])) {
-        if ($_POST["Cadastro"] == 2) {
-            $conn->UPDATERETURN(" UPDATE USUARIOS SET NOME = '" . $_POST["Nome"] . "'  WHERE USUARIOS_ID = " . $_SESSION['id']);
-            $_SESSION['nome'] = $_POST["Cadastro"];
-            header("Location: CadastroUsuarios.php");
-        } else {
-            $conn->UPDATERETURN("insert into PETS_PERDIDOS values ('" . utf8_decode($_POST["NomePet"]) . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . utf8_decode($_POST["DescPet"]) . "', '" . $_SESSION['id'] . "')");
-            $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS_PERDIDOS");
-            
-            if (count($max) > 1)
+    if (isset($_POST["Cadastro"])) 
+    {      
+        $fil= $_FILES["photo"]["tmp_name"];
+        $out2 = ImgParaBase64($fil);  
+
+        if (!($_POST["NomePet"] == ''
+            || $_POST["TipoPet"] == ''
+            || $_POST["txtSexoPet"] == ''
+            || $_POST["IdadePet"] == ''
+            || $_POST["DescPet"] == '') &&  $out2 != 'null' ) 
+        {  
+            $conn->UPDATERETURN("insert into PETS_PERDIDOS values ('" . $_POST["NomePet"] . "', '" . $_POST["TipoPet"] . "', '" . $_POST["txtSexoPet"] . "', '" . $_POST["IdadePet"] . "', '" . $_POST["DescPet"] . "', '" . $_SESSION['id'] . "')");
+            $max = $conn -> SelectReturn("SELECT MAX(PET_ID) AS ID from PETS_PERDIDOS");            
+            if (isset($_FILES["photo"]))
             { 
                 inserefoto($max[1][0]);
-            }            
-            
-            //$_SESSION['nome'] = $_POST["Cadastro"];
+            }
             header("Location: Publicacoes.php");
         }
+        else{
+            echo "<script> alert('Preencha todos os campos e insira uma foto!'); </script>";
+        } 
+
     } 
     ?>
     <form method="post" enctype="multipart/form-data">
