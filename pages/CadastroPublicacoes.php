@@ -19,7 +19,6 @@
     //$conn = new conexao;
     include('view/binarios.php');
 
-
     function inserefoto(){
         if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0)
         {
@@ -29,8 +28,6 @@
         }
         return "null";
     }
-
-
     if (isset($_POST["Cadastro"])) {
         $fil= $_FILES["photo"]["tmp_name"];
         $out2 = ImgParaBase64($fil);  
@@ -45,11 +42,7 @@
             echo "<script> alert('Preencha todos os campos e insira uma foto!'); </script>";
         } 
     }
-    
-    
     ?>
-
-
 
     <form method="post" enctype="multipart/form-data">
         <fieldset class="fieldset-center lheigth">
